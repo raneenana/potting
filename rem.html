@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Fake Music</title>
+  <link rel="stylesheet" href="./index.css" />
+  <script>
+    // 计算rem
+    var fun = function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          //这里是假设在750px宽度设计稿的情况下，1rem = 100px；
+          //可以根据实际需要修改
+          docEl.style.fontSize = (clientWidth / 750) * 100 + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    }
+    fun(document, window);
+  </script>
+  <!-- 引入移动端调试工具 -->
+  <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+  <!-- 引入错误监考工具sentr -->
+  <script src="https://browser.sentry-cdn.com/4.4.1/bundle.min.js" crossorigin="anonymous"></script>
+  <script>
+    eruda.init();
+    Sentry.init({ dsn: 'https://92c723e40ae941b8b7e963090666f813@sentry.io/1352768' });
+    // setInterval(function(){
+    //   console.log(a.a);
+    // }, 500);
+  </script>
+  <!-- 加入百度统计 -->
+  <script>
+    var _hmt = _hmt || [];
+    window._hmt = _hmt;
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?725c4067679fbafecb9c245b23914b4e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <script src="./index.js"></script>
+
+</body>
+
+</html>
+
+
+<!-- onTest: {
+  default:  function(){}
+},
+onCall: {
+  default: function(){}
+} -->
